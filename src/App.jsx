@@ -19,6 +19,18 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidUpdate(_, prevState) {
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+    if (this.state.contacts.length !== prevState.contacts.length) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    }
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem('contacts')) {
+      this.setState({ contacts: JSON.parse(localStorage.getItem('contacts')) });
+    }
+  }
   handleSubmit = (values, { resetForm }) => {
     const { name, number } = values;
     resetForm({

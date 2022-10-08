@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 export const ContactList = ({ contacts, deleteContact }) => {
   return (
-    <Box us="ul" mt={3} width="650px">
+    <Box us="ul" mt={3} ml={3} width="630px">
       {contacts.map(({ id, name, number }) => {
         return (
           <ContactListItem
